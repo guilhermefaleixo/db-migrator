@@ -35,13 +35,13 @@ for TABLE in "${TABLES[@]}"; do
     echo "Data moved for table: $TABLE"
 done
 
-echo "Moving customer data"
+echo "Moving data for table: customers"
 nohup pt-archiver --source h=$SOURCE_HOST,u=$SOURCE_USER,p=$SOURCE_PASSWORD,D=$SOURCE_DATABASE,t=customers,P=3310,L=/tmp \
                 --dest h=$DEST_HOST,u=$DEST_USER,p=$DEST_PASSWORD,D=$DEST_DATABASE,t=customers,P=3309,L=/tmp \
                 --where "1=1" --statistics --progress=10000 --limit=1000 --no-delete --no-safe-auto-increment --why-quit --bulk-insert --no-check-columns --skip-foreign-key > customers.log &&
 echo "Data moved for table: customers"
 
-echo "Moving addresses data"
+echo "Moving data for table: addresses"
 nohup pt-archiver --source h=$SOURCE_HOST,u=$SOURCE_USER,p=$SOURCE_PASSWORD,D=$SOURCE_DATABASE,t=customers,P=3310,L=/tmp \
                 --dest h=$DEST_HOST,u=$DEST_USER,p=$DEST_PASSWORD,D=$DEST_DATABASE,t=addresses,P=3309,L=/tmp \
                 --where "1=1" --statistics --progress=10000 --limit=1000 --no-delete --no-check-columns --no-safe-auto-increment --columns=city,state,postalcode,country,addressline1,addressline2,customernumber --why-quit  > addresses.log &&
