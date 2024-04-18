@@ -3,12 +3,12 @@
 # Set variables for source and destination MySQL servers
 SOURCE_HOST="127.0.0.1"
 SOURCE_USER="root"
-SOURCE_PASSWORD="nyw"
+SOURCE_PASSWORD="pass"
 SOURCE_DATABASE="classicmodels"
 
 DEST_HOST="127.0.0.1"
 DEST_USER="root"
-DEST_PASSWORD="nyw"
+DEST_PASSWORD="pass"
 DEST_DATABASE="classicmodels"
 
 # Define an array of tables to move
